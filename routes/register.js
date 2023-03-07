@@ -5,10 +5,10 @@ const bcrypt = require("bcryptjs");
 const router = express.Router();
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'db_reference',
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "e_reference",
 });
 
 router.get("/", (req, res, next) => {
@@ -24,20 +24,16 @@ router.post("/", (req, res, next) => {
     async (err, results) => {
       if (err) {
         console.log(err);
-        // return res.render('register', {message:"There was an error"})
         res.json({
           message: "There was an error",
         });
       }
 
       if (results.length > 0) {
-        // return res.render("register", { message: "Email has been taken" });
-        res.json({
-          message: "Email has been taken",
-        });
+        res.redirect("/register");
       }
 
-      let hashedPassword = await bcrypt.hash(password, 8);
+      let hashedPassword = await bcrypt.hash(password, 10);
 
       db.query(
         "INSERT INTO users SET ?",
@@ -46,10 +42,7 @@ router.post("/", (req, res, next) => {
           if (err) {
             console.log(err);
           } else {
-            // return res.render("home", { api_key });
-            res.json({
-              message: "Author account created successfully",
-            });
+            res.redirect("/login");
           }
         }
       );

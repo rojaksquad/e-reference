@@ -14,10 +14,10 @@ app.set("view engine", "ejs");
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'db_reference',
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "e_reference",
 });
 
 db.connect((err) => {
@@ -32,11 +32,10 @@ db.connect((err) => {
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.get("/", (req, res) => {
-  res.render("login");
+  res.render("home");
 });
-app.get("/register", (req, res) => {
-  res.render("register");
-});
+app.use("/category", require("./routes/category"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

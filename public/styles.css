@@ -12020,6 +12020,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.categorys {
+  text-decoration: none;
+}
+
 .register {
   background: -webkit-linear-gradient(left, #f4623a, #e68831);
   margin-top: 3rem;

@@ -5,53 +5,47 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 
 const db = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: '',
-	database: 'db_reference',
-  });	  
-
-router.get("/", (req,res,next) => {
-	res.render("login");
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "e_reference",
 });
 
-router.post('/', (req, res) => {
-  const {email, password} = req.body;
+router.get("/", (req, res, next) => {
+  res.render("login");
+});
+
+router.post("/", (req, res) => {
+  const { email, password } = req.body;
+  console.log(email, password);
   db.query(
     "SELECT password FROM users WHERE email = ?",
     [email],
-    async(err, docs) =>{
+    async (err, docs) => {
       if (!err) {
-        if (docs.length == 1) {
-          bcrypt.compare(password, docs[0].password, function(err, result) {
+        if (docs.length > 0) {
+          bcrypt.compare(password, docs[0].password, function (err, result) {
             if (err) {
               console.log(err);
               res.json({
                 message: "Terdapat Kesalahan silahkan login kembali",
               });
-            }
-            else {
-                if (result) {
-                  res.json({
-                    message: "login berhasil",
-                  });
-                }else{
-                  res.json({
-                    message: "password salah",
-                  });
-                }
+            } else {
+              if (result) {
+                res.redirect("/dashboard");
+              } else {
+                res.redirect("/login");
+              }
             }
           });
         } else {
-          res.json({
-            message: "Akun Salah",
-          });
+          res.redirect("/register");
         }
-    } else {
+      } else {
         console.error(err);
+      }
     }
-    }
-  )
- })
+  );
+});
 
-module.exports = router ;
+module.exports = router;
