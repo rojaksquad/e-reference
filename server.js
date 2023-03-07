@@ -14,10 +14,10 @@ app.set("view engine", "ejs");
 
 // MySQL connection
 const db = mysql.createConnection({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'db_reference',
 });
 
 db.connect((err) => {
@@ -30,8 +30,12 @@ db.connect((err) => {
 
 // Routes middleware
 app.use("/register", require("./routes/register"));
+app.use("/login", require("./routes/login"));
 app.get("/", (req, res) => {
   res.render("login");
+});
+app.get("/register", (req, res) => {
+  res.render("register");
 });
 
 const PORT = process.env.PORT || 3000;
