@@ -7,7 +7,11 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "e_reference",
+  database: "db_reference",
+});
+
+router.get("/read", (req, res, next) => {
+  res.render("read");
 });
 
 router.get("/computer", (req, res, next) => {

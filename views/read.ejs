@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+    <!-- Book -->
+    <div class="section">
+        <div class="row">
+            <div class="col my-3 mx-3">
+                <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61JuC+epPFL.jpg" alt="">
+            </div>
+            <div class="col my-3">
+                <div class="row">
+                    <div class="col">
+                        <h4>Judul </h4>
+                    </div>
+                    <div class="col">
+                        <h4>: </h4>
+                    </div>
+                    <div class="col">
+                        <h5>Software Engineering A Practicioner's Approach</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4>Penulis </h4>
+                    </div>
+                    <div class="col">
+                        <h4>: </h4>
+                    </div>
+                    <div class="col">
+                        <h5>Roger S Pressman</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4>Publisher </h4>
+                    </div>
+                    <div class="col">
+                        <h4>: </h4>
+                    </div>
+                    <div class="col">
+                        <h5> McGraw Hill</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h4>Tanggal Publish </h4>
+                    </div>
+                    <div class="col">
+                        <h4>: </h4>
+                    </div>
+                    <div class="col">
+                        <h5> January 23, 2014</h5>
+                    </div>
+                </div>
+                    <div class="col mt-5">
+                        <h4>Description</h4>
+                        <p>
+                            For almost three decades, Roger Pressman's Software Engineering: A Practitioner's Approach has been the world's leading textbook in software engineering. The new edition represents a major restructuring and update of previous editions, solidifying the book's position as the most comprehensive guide to this important subject. The chapter structure will return to a more linear presentation of software engineering topics with a direct emphasis on the major activities that are part of a generic software process. Content will focus on widely used software engineering methods and will de-emphasize or completely eliminate discussion of secondary methods, tools and techniques. The intent is to provide a more targeted, prescriptive, and focused approach, while attempting to maintain SEPA's reputation as a comprehensive guide to software engineering. The 39 chapters of this edition are organized into five parts - Process, Modeling, Quality Management, Managing Software Projects, and Advanced Topics. The book has been revised and restructured to improve pedagogical flow and emphasize new and important software engineering processes and practices. McGraw-Hill's Connect, is also available as an optional, add on item. Connect is the only integrated learning system that empowers students by continuously adapting to deliver precisely what they need, when they need it, how they need it, so that class time is more effective. Connect allows the professor to assign homework, quizzes, and tests easily and automatically grades and records the scores of the student's work. Problems are randomized to prevent sharing of answers an may also have a "multi-step solution" which helps move the students' learning along if they experience difficulty.
+                        </p>
+                    </div>
+                    <button>
+                        <a href="#" class="nav-link" id="btnSitasi" data-bs-toggle="modal" data-bs-target="#modalSitasi">
+                           Sitasi</a>
+                    </button>
+                    <button>
+                        <a href="https://repository.dinus.ac.id/docs/ajar/Software_Engineering_-_Pressman.pdf" class="text-black">
+                            Baca</a>
+                    </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Modal Sitasi-->
+<div class="modal fade" id="modalSitasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Format Sitasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="textSitasi">
+            <div class="row">
+                <div class="col">
+                    <h5>APA Style</h5>   
+                </div>
+                <div class="col">
+                    <p>Pressman, Roger S., Maxim, Bruce R.. (2015). SOFTWARE ENGINEERING; A Practitioner's Approach (8th). New York: MCGRAW-HILL.</p>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Chicago Style</h5>
+                </div>
+                <div class="col">
+                    <p>Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Text.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>MLA Style</h5>
+                </div>
+                <div class="col">
+                    <p>Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Text.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Turabian Style</h5>
+                </div>
+                <div class="col">
+                    <p>Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Print.</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
