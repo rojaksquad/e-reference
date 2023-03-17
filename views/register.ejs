@@ -46,6 +46,7 @@
                         class="form-control"
                         placeholder="Fullname *"
                         name="fullname"
+                        required
                       />
                     </div>
                     <div class="form-group" style="margin-bottom: 2%">
@@ -60,29 +61,37 @@
                     <div class="form-group" style="margin-bottom: 2%">
                       <input
                         type="text"
-                        minlength="10"
-                        maxlength="10"
+                        minlength="12"
+                        maxlength="14"
                         class="form-control"
                         placeholder="Phone Number *"
+                        required
                       />
                     </div>
-                    <button type="submit" class="btnRegister">Register</button>
+                    <button type="submit" id="register" class="btnRegister">
+                      Register
+                    </button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group" style="margin-bottom: 2%">
                       <input
                         type="password"
                         name="password"
+                        id="password"
                         required
                         class="form-control"
                         placeholder="Password *"
+                        onkeyup="check()"
                       />
                     </div>
                     <div class="form-group" style="margin-bottom: 2%">
                       <input
                         type="password"
+                        id="confirm_password"
                         class="form-control"
                         placeholder="Confirm Password *"
+                        required
+                        onkeyup="check()"
                       />
                     </div>
                   </div>
@@ -101,5 +110,26 @@
     <script src="./js/register.js"></script>
 
     <script src="/reload/reload.js"></script>
+
+    <script>
+      var check = function () {
+        if (
+          document.getElementById("password").value ==
+          document.getElementById("confirm_password").value
+        ) {
+          document.getElementById("register").disabled = false;
+          document.getElementById("password").style.border =
+            "4px solid #008000";
+          document.getElementById("confirm_password").style.border =
+            "4px solid #008000";
+        } else {
+          document.getElementById("register").disabled = true;
+          document.getElementById("password").style.border =
+            "4px solid #ff0000";
+          document.getElementById("confirm_password").style.border =
+            "4px solid #ff0000";
+        }
+      };
+    </script>
   </body>
 </html>
