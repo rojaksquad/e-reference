@@ -11,7 +11,10 @@ const db = mysql.createConnection({
 });
 
 router.get("/read", (req, res, next) => {
-  res.render("read");
+  db.query('SELECT * FROM reference', function(err,rows){
+    console.log(rows);
+    res.render("read", {data : rows, error : false});
+  })
 });
 
 router.get("/computer", (req, res, next) => {

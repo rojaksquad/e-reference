@@ -31,22 +31,22 @@
                             <tr>
                                 <th scope="row">Judul</th>
                                 <td>:</td>
-                                <td>Software Engineering A Practicioner's Approach</td>
+                                <td><%= data[0].judul%></td>
                             </tr>
                             <tr>
                                 <th scope="row">Penulis</th>
                                 <td>:</td>
-                                <td>Roger S Pressman</td>
+                                <td><%= data[0].penulis%></td>
                             </tr>
               <tr>
                   <th scope="row">Publisher</th>
                   <td>:</td>
-                  <td>McGraw Hill</td>
+                  <td><%= data[0].publisher%></td>
                 </tr>
                 <tr>
                     <th scope="row">Tanggal Publish</th>
                 <td>:</td>
-                <td>January 23, 2014</td>
+                <td><%= data[0].tgl%></td>
             </tr>
             <tr>
                 <td>
@@ -57,7 +57,7 @@
                     </td>
                     <td>
                         <button class="btn btn-primary">
-                            <a href="https://repository.dinus.ac.id/docs/ajar/Software_Engineering_-_Pressman.pdf" class="nav-link text-white">
+                            <a href="<%= data[0].imgUrl%>" class="nav-link text-white">
                                 Baca</a>
                             </button>
                         </td>
@@ -67,7 +67,7 @@
     <div class="col mt-5">
         <h4>Description</h4>
         <p>
-            For almost three decades, Roger Pressman's Software Engineering: A Practitioner's Approach has been the world's leading textbook in software engineering. The new edition represents a major restructuring and update of previous editions, solidifying the book's position as the most comprehensive guide to this important subject. The chapter structure will return to a more linear presentation of software engineering topics with a direct emphasis on the major activities that are part of a generic software process. Content will focus on widely used software engineering methods and will de-emphasize or completely eliminate discussion of secondary methods, tools and techniques. The intent is to provide a more targeted, prescriptive, and focused approach, while attempting to maintain SEPA's reputation as a comprehensive guide to software engineering. The 39 chapters of this edition are organized into five parts - Process, Modeling, Quality Management, Managing Software Projects, and Advanced Topics. The book has been revised and restructured to improve pedagogical flow and emphasize new and important software engineering processes and practices. McGraw-Hill's Connect, is also available as an optional, add on item. Connect is the only integrated learning system that empowers students by continuously adapting to deliver precisely what they need, when they need it, how they need it, so that class time is more effective. Connect allows the professor to assign homework, quizzes, and tests easily and automatically grades and records the scores of the student's work. Problems are randomized to prevent sharing of answers an may also have a "multi-step solution" which helps move the students' learning along if they experience difficulty.
+            <%= data[0].deskripsi%>
         </p>
     </div>
                 </div>
