@@ -31,6 +31,7 @@ router.post("/", (req, res, next) => {
 
       if (results.length > 0) {
         res.redirect("/register");
+        return
       }
 
       let hashedPassword = await bcrypt.hash(password, 10);

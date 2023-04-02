@@ -8,13 +8,15 @@
   <body>
 
     <!-- Nav -->
-    <nav class="navbar bg-body-tertiary">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="RojakReference" width="30" height="24">
-          </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3" id="homeNav">
+        <div class="container px-3 px-lg-3">
+            <img src="/img/logo.png" width="50px" alt="">
+            <a class="navbar-brand fw-bolder px-2" href="/" style="color: #f4623a;">Rojak Reference</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+            </div>
         </div>
-      </nav>
+    </nav>
 
     <!-- Book -->
     <div class="container">
@@ -22,7 +24,7 @@
         <div class="section">
             <div class="row">
                 <div class="col my-3 mx-3">
-                    <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61JuC+epPFL.jpg" alt="">
+                    <img src="<%= data[0].imgUrl %>" alt="">
                 </div>
                 <div class="col my-3">
                     <!-- table -->
@@ -92,18 +94,18 @@
                     <p id="pAPA" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="APA">Pressman, Roger S., Maxim, Bruce R.. (2015). SOFTWARE ENGINEERING; A Practitioner's Approach (8th). New York: MCGRAW-HILL.</p>
+                    <p id="APA">Pressman, R. S. (2999). Software engineering: A practitioner's approach. McGraw Hill.</p>
                     
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h5>Chicago Style</h5>
+                    <h5>AAPG Style</h5>
                     <button id="bCHI" onclick="copyCHI()">Copy</button>
                     <p id="pCHI" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="CHI">Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Text.</p>
+                    <p id="CHI">Pressman, R. S., 2999, Software engineering: A practitioner's approach: McGraw Hill.</p>
                 </div>
             </div>
             <div class="row">
@@ -113,17 +115,17 @@
                     <p id="pMLA" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="MLA">Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Text.</p>
+                    <p id="MLA">Pressman, Roger S. Software Engineering: A Practitioner's Approach. McGraw Hill., 2999.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h5>Turabian Style</h5>
+                    <h5>AAPS Style</h5>
                     <button id="bTUR" onclick="copyTUR()">Copy</button>
                     <p id="pTUR" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="TUR">Pressman, Roger S., Maxim, Bruce R.. SOFTWARE ENGINEERING; A Practitioner's Approach. 8th New York: MCGRAW-HILL, 2015. Print.</p>
+                    <p id="TUR">Pressman RS (2999) Software engineering: A practitioner's approach. McGraw Hill. </p>
                 </div>
             </div>
         </div>
@@ -147,6 +149,11 @@
             var button = document.getElementById("bAPA").style.visibility = "hidden";
             var pCitate = document.getElementById("pAPA").style.visibility = "visible";
 
+            setTimeout(() => {
+                var button = document.getElementById("bAPA").style.visibility = "visible";
+                var pCitate = document.getElementById("pAPA").style.visibility = "hidden";
+            }, 1000);
+
         }
 
         async function copyCHI() {
@@ -158,6 +165,11 @@
 
             var button = document.getElementById("bCHI").style.visibility = "hidden";
             var pCitate = document.getElementById("pCHI").style.visibility = "visible";
+
+            setTimeout(() => {
+                var button = document.getElementById("bCHI").style.visibility = "visible";
+                var pCitate = document.getElementById("pCHI").style.visibility = "hidden";
+            }, 1000);
 
         }
 
@@ -171,6 +183,11 @@
             var button = document.getElementById("bMLA").style.visibility = "hidden";
             var pCitate = document.getElementById("pMLA").style.visibility = "visible";
 
+            setTimeout(() => {
+                var button = document.getElementById("bMLA").style.visibility = "visible";
+                var pCitate = document.getElementById("pMLA").style.visibility = "hidden";
+            }, 1000);
+
         }
 
         async function copyTUR() {
@@ -182,6 +199,11 @@
 
             var button = document.getElementById("bTUR").style.visibility = "hidden";
             var pCitate = document.getElementById("pTUR").style.visibility = "visible";
+
+            setTimeout(() => {
+                var button = document.getElementById("bTUR").style.visibility = "visible";
+                var pCitate = document.getElementById("pTUR").style.visibility = "hidden";
+            }, 1000);
 
         }
     </script>
