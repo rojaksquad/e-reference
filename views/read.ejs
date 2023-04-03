@@ -48,7 +48,7 @@
                 <tr>
                     <th scope="row">Tanggal Publish</th>
                 <td>:</td>
-                <td><%= data[0].tgl%></td>
+                <td><%= data[0].tgl.toLocaleDateString('el-GR')%></td>
             </tr>
             <tr>
                 <td>
@@ -59,7 +59,7 @@
                     </td>
                     <td>
                         <button class="btn btn-primary">
-                            <a href="<%= data[0].imgUrl%>" class="nav-link text-white">
+                            <a href="<%= data[0].pdf%>" class="nav-link text-white">
                                 Baca</a>
                             </button>
                         </td>
