@@ -94,7 +94,7 @@
                     <p id="pAPA" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="APA">Pressman, R. S. (2999). Software engineering: A practitioner's approach. McGraw Hill.</p>
+                    <p id="APA"><%= data[0].penulis  %> (<%= data[0].tgl.getFullYear() %>). <%= data[0].judul  %>. <%= data[0].publisher %>.</p>
                     
                 </div>
             </div>
@@ -105,7 +105,8 @@
                     <p id="pCHI" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="CHI">Pressman, R. S., 2999, Software engineering: A practitioner's approach: McGraw Hill.</p>
+                    <p id="CHI"><%= data[0].penulis  %>, <%= data[0].tgl.getFullYear() %>, <%= data[0].judul  %>: <%= data[0].publisher %>.</p>
+
                 </div>
             </div>
             <div class="row">
@@ -115,7 +116,8 @@
                     <p id="pMLA" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="MLA">Pressman, Roger S. Software Engineering: A Practitioner's Approach. McGraw Hill., 2999.</p>
+                    <p id="MLA"><%= data[0].penulis  %>. <%= data[0].judul  %>. <%= data[0].publisher %>., <%= data[0].tgl.getFullYear() %>.</p>
+
                 </div>
             </div>
             <div class="row">
@@ -125,7 +127,8 @@
                     <p id="pTUR" style="visibility: hidden;">Copied!</p>
                 </div>
                 <div class="col">
-                    <p id="TUR">Pressman RS (2999) Software engineering: A practitioner's approach. McGraw Hill. </p>
+                    <p id="TUR"><%= data[0].penulis  %> (<%= data[0].tgl.getFullYear() %>) <%= data[0].judul  %>. <%= data[0].publisher %>.</p>
+                    
                 </div>
             </div>
         </div>
