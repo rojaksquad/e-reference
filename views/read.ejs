@@ -24,7 +24,7 @@
         <div class="section">
             <div class="row">
                 <div class="col my-3 mx-3">
-                    <img src="<%= data[0].imgUrl %>" alt="">
+                    <embed src="<%= data[0].pdf%>" width="800px" height="800px" />
                 </div>
                 <div class="col my-3">
                     <!-- table -->
@@ -59,8 +59,8 @@
                     </td>
                     <td>
                         <button class="btn btn-primary">
-                            <a href="<%= data[0].pdf%>" class="nav-link text-white">
-                                Baca</a>
+                            <a href="<%= data[0].pdf%>" class="nav-link text-white" download>
+                                Download</a>
                             </button>
                         </td>
             </tr>
@@ -206,6 +206,7 @@
             }, 1000);
 
         }
+
     </script>
 </body>
 </html>
