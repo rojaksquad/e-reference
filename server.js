@@ -31,11 +31,9 @@ db.connect((err) => {
 // Routes middleware
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
-app.get("/", (req, res) => {
-  res.render("home");
-});
 app.use("/category", require("./routes/category"));
 app.use("/dashboard", require("./routes/dashboard"));
+app.get("/", require("./routes/home"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

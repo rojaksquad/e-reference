@@ -1,215 +1,294 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">  </head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= data[0].judul %></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
   <body>
-
     <!-- Nav -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3" id="homeNav">
-        <div class="container px-3 px-lg-3">
-            <img src="/img/logo.png" width="50px" alt="">
-            <a class="navbar-brand fw-bolder px-2" href="/" style="color: #f4623a;">Rojak Reference</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
-        </div>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light py-3"
+      id="homeNav"
+    >
+      <div class="container px-3 px-lg-3">
+        <img src="/img/logo.png" width="50px" alt="" />
+        <a class="navbar-brand fw-bolder px-2" href="/" style="color: #f4623a"
+          >Rojak Reference</a
+        >
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive"></div>
+      </div>
     </nav>
 
     <!-- Book -->
     <div class="container">
-
-        <div class="section">
-            <div class="row">
-                <div class="col my-3 mx-3">
-                    <embed src="<%= data[0].pdf%>" width="800px" height="800px" />
-                </div>
-                <div class="col my-3">
-                    <!-- table -->
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th scope="row">Judul</th>
-                                <td>:</td>
-                                <td><%= data[0].judul%></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Penulis</th>
-                                <td>:</td>
-                                <td><%= data[0].penulis%></td>
-                            </tr>
-              <tr>
+      <div class="section">
+        <div class="row">
+          <div class="col my-3 mx-3">
+            <embed src="<%= data[0].imgUrl%>" width="500px" height="500px" />
+          </div>
+          <div class="col my-3">
+            <!-- table -->
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Judul</th>
+                  <td>:</td>
+                  <td><%= data[0].judul%></td>
+                </tr>
+                <tr>
+                  <th scope="row">Penulis</th>
+                  <td>:</td>
+                  <td><%= data[0].penulis%></td>
+                </tr>
+                <tr>
                   <th scope="row">Publisher</th>
                   <td>:</td>
                   <td><%= data[0].publisher%></td>
                 </tr>
                 <tr>
-                    <th scope="row">Tanggal Publish</th>
-                <td>:</td>
-                <td><%= data[0].tgl.toLocaleDateString('el-GR')%></td>
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn btn-primary">
-                        <a href="#" class="nav-link" id="btnSitasi" data-bs-toggle="modal" data-bs-target="#modalSitasi">
-                            Sitasi</a>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary">
-                            <a href="<%= data[0].pdf%>" class="nav-link text-white" download>
-                                Download</a>
-                            </button>
-                        </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="col mt-5">
-        <h4>Description</h4>
-        <p>
-            <%= data[0].deskripsi%>
-        </p>
-    </div>
-                </div>
+                  <th scope="row">Tanggal Publish</th>
+                  <td>:</td>
+                  <td><%= data[0].tgl.toLocaleDateString('el-GR')%></td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="btn btn-secondary">
+                      <a
+                        href="#"
+                        class="nav-link"
+                        id="btnSitasi"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSitasi"
+                      >
+                        Sitasi</a
+                      >
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-dark text-white">
+                      <a
+                        href="<%= data[0].readUrl %>"
+                        class="nav-link"
+                      >
+                        Baca</a
+                      >
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" <% if (data[0].downloadUrl == "") { %>
+                        hidden
+                    <% } %>>
+                      <a
+                        href="<%= data[0].downloadUrl %>"
+                        class="nav-link text-white"
+                        download
+                      >
+                        Download</a
+                      >
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col mt-5">
+              <h4>Description</h4>
+              <p><%= data[0].deskripsi%></p>
             </div>
-        </div>
-    </div>
-        
-        
-        <!-- Modal Sitasi-->
-        <div class="modal fade" id="modalSitasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Format Sitasi</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-        <div class="modal-body" id="textSitasi">
-            <div class="row">
-                <div class="col">
-                    <h5>APA Style</h5>   
-                    <button id="bAPA" onclick="copyAPA()">Copy</button>
-                    <p id="pAPA" style="visibility: hidden;">Copied!</p>
-                </div>
-                <div class="col">
-                    <p id="APA"><%= data[0].penulis  %> (<%= data[0].tgl.getFullYear() %>). <%= data[0].judul  %>. <%= data[0].publisher %>.</p>
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h5>AAPG Style</h5>
-                    <button id="bCHI" onclick="copyCHI()">Copy</button>
-                    <p id="pCHI" style="visibility: hidden;">Copied!</p>
-                </div>
-                <div class="col">
-                    <p id="CHI"><%= data[0].penulis  %>, <%= data[0].tgl.getFullYear() %>, <%= data[0].judul  %>: <%= data[0].publisher %>.</p>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h5>MLA Style</h5>
-                    <button id="bMLA" onclick="copyMLA()">Copy</button>
-                    <p id="pMLA" style="visibility: hidden;">Copied!</p>
-                </div>
-                <div class="col">
-                    <p id="MLA"><%= data[0].penulis  %>. <%= data[0].judul  %>. <%= data[0].publisher %>., <%= data[0].tgl.getFullYear() %>.</p>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h5>AAPS Style</h5>
-                    <button id="bTUR" onclick="copyTUR()">Copy</button>
-                    <p id="pTUR" style="visibility: hidden;">Copied!</p>
-                </div>
-                <div class="col">
-                    <p id="TUR"><%= data[0].penulis  %> (<%= data[0].tgl.getFullYear() %>) <%= data[0].judul  %>. <%= data[0].publisher %>.</p>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>  
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  
+    <!-- Modal Sitasi-->
+    <div
+      class="modal fade"
+      id="modalSitasi"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Format Sitasi</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="textSitasi">
+            <div class="row">
+              <div class="col">
+                <h5>APA Style</h5>
+                <button id="bAPA" onclick="copyAPA()">Copy</button>
+                <p id="pAPA" style="visibility: hidden">Copied!</p>
+              </div>
+              <div class="col">
+                <p id="APA">
+                  <%= data[0].penulis %> (<%= data[0].tgl.getFullYear() %>). <%=
+                  data[0].judul %>. <%= data[0].publisher %>.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>AAPG Style</h5>
+                <button id="bCHI" onclick="copyCHI()">Copy</button>
+                <p id="pCHI" style="visibility: hidden">Copied!</p>
+              </div>
+              <div class="col">
+                <p id="CHI">
+                  <%= data[0].penulis %>, <%= data[0].tgl.getFullYear() %>, <%=
+                  data[0].judul %>: <%= data[0].publisher %>.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>MLA Style</h5>
+                <button id="bMLA" onclick="copyMLA()">Copy</button>
+                <p id="pMLA" style="visibility: hidden">Copied!</p>
+              </div>
+              <div class="col">
+                <p id="MLA">
+                  <%= data[0].penulis %>. <%= data[0].judul %>. <%=
+                  data[0].publisher %>., <%= data[0].tgl.getFullYear() %>.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>AAPS Style</h5>
+                <button id="bTUR" onclick="copyTUR()">Copy</button>
+                <p id="pTUR" style="visibility: hidden">Copied!</p>
+              </div>
+              <div class="col">
+                <p id="TUR">
+                  <%= data[0].penulis %> (<%= data[0].tgl.getFullYear() %>) <%=
+                  data[0].judul %>. <%= data[0].publisher %>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
     <script>
-        async function copyAPA() {
-            // Get the text field
-            var copyText = document.getElementById("APA").innerText;
+      async function copyAPA() {
+        // Get the text field
+        var copyText = document.getElementById("APA").innerText;
 
-            // Copy the text inside the text field
-            await navigator.clipboard.writeText(copyText);
+        // Copy the text inside the text field
+        await navigator.clipboard.writeText(copyText);
 
-            var button = document.getElementById("bAPA").style.visibility = "hidden";
-            var pCitate = document.getElementById("pAPA").style.visibility = "visible";
+        var button = (document.getElementById("bAPA").style.visibility =
+          "hidden");
+        var pCitate = (document.getElementById("pAPA").style.visibility =
+          "visible");
 
-            setTimeout(() => {
-                var button = document.getElementById("bAPA").style.visibility = "visible";
-                var pCitate = document.getElementById("pAPA").style.visibility = "hidden";
-            }, 1000);
+        setTimeout(() => {
+          var button = (document.getElementById("bAPA").style.visibility =
+            "visible");
+          var pCitate = (document.getElementById("pAPA").style.visibility =
+            "hidden");
+        }, 1000);
+      }
 
-        }
+      async function copyCHI() {
+        // Get the text field
+        var copyText = document.getElementById("CHI").innerText;
 
-        async function copyCHI() {
-            // Get the text field
-            var copyText = document.getElementById("CHI").innerText;
+        // Copy the text inside the text field
+        await navigator.clipboard.writeText(copyText);
 
-            // Copy the text inside the text field
-            await navigator.clipboard.writeText(copyText);
+        var button = (document.getElementById("bCHI").style.visibility =
+          "hidden");
+        var pCitate = (document.getElementById("pCHI").style.visibility =
+          "visible");
 
-            var button = document.getElementById("bCHI").style.visibility = "hidden";
-            var pCitate = document.getElementById("pCHI").style.visibility = "visible";
+        setTimeout(() => {
+          var button = (document.getElementById("bCHI").style.visibility =
+            "visible");
+          var pCitate = (document.getElementById("pCHI").style.visibility =
+            "hidden");
+        }, 1000);
+      }
 
-            setTimeout(() => {
-                var button = document.getElementById("bCHI").style.visibility = "visible";
-                var pCitate = document.getElementById("pCHI").style.visibility = "hidden";
-            }, 1000);
+      async function copyMLA() {
+        // Get the text field
+        var copyText = document.getElementById("MLA").innerText;
 
-        }
+        // Copy the text inside the text field
+        await navigator.clipboard.writeText(copyText);
 
-        async function copyMLA() {
-            // Get the text field
-            var copyText = document.getElementById("MLA").innerText;
+        var button = (document.getElementById("bMLA").style.visibility =
+          "hidden");
+        var pCitate = (document.getElementById("pMLA").style.visibility =
+          "visible");
 
-            // Copy the text inside the text field
-            await navigator.clipboard.writeText(copyText);
+        setTimeout(() => {
+          var button = (document.getElementById("bMLA").style.visibility =
+            "visible");
+          var pCitate = (document.getElementById("pMLA").style.visibility =
+            "hidden");
+        }, 1000);
+      }
 
-            var button = document.getElementById("bMLA").style.visibility = "hidden";
-            var pCitate = document.getElementById("pMLA").style.visibility = "visible";
+      async function copyTUR() {
+        // Get the text field
+        var copyText = document.getElementById("TUR").innerText;
 
-            setTimeout(() => {
-                var button = document.getElementById("bMLA").style.visibility = "visible";
-                var pCitate = document.getElementById("pMLA").style.visibility = "hidden";
-            }, 1000);
+        // Copy the text inside the text field
+        await navigator.clipboard.writeText(copyText);
 
-        }
+        var button = (document.getElementById("bTUR").style.visibility =
+          "hidden");
+        var pCitate = (document.getElementById("pTUR").style.visibility =
+          "visible");
 
-        async function copyTUR() {
-            // Get the text field
-            var copyText = document.getElementById("TUR").innerText;
-
-            // Copy the text inside the text field
-            await navigator.clipboard.writeText(copyText);
-
-            var button = document.getElementById("bTUR").style.visibility = "hidden";
-            var pCitate = document.getElementById("pTUR").style.visibility = "visible";
-
-            setTimeout(() => {
-                var button = document.getElementById("bTUR").style.visibility = "visible";
-                var pCitate = document.getElementById("pTUR").style.visibility = "hidden";
-            }, 1000);
-
-        }
-
+        setTimeout(() => {
+          var button = (document.getElementById("bTUR").style.visibility =
+            "visible");
+          var pCitate = (document.getElementById("pTUR").style.visibility =
+            "hidden");
+        }, 1000);
+      }
     </script>
-</body>
+  </body>
 </html>
