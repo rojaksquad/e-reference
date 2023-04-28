@@ -36,6 +36,7 @@ app.get("/", (req, res) => {
 });
 app.use("/category", require("./routes/category"));
 app.use("/dashboard", require("./routes/dashboard"));
+app.use("/upload", require("./routes/upload"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
