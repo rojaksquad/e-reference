@@ -15,11 +15,16 @@ router.get("/upload", (req, res, next) => {
   res.render("upload");
 });
 
-router.get("/read", (req, res, next) => {
-  db.query('SELECT * FROM reference', function(err,rows){
-    console.log(rows);
-    res.render("read", {data : rows, error : false});
-  })
+
+router.get("/read/:id", (req, res, next) => {
+  db.query(
+    `SELECT * FROM reference WHERE id = ${req.params.id}`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("read", { data: result });
+    }
+  );
+
 });
 
 router.get("/computer", (req, res, next) => {
