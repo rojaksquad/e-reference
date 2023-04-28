@@ -10,12 +10,6 @@ const db = mysql.createConnection({
   database: "db_reference",
 });
 
-//upload
-router.get("/upload", (req, res, next) => {
-  res.render("upload");
-});
-
-
 router.get("/read/:id", (req, res, next) => {
   db.query(
     `SELECT * FROM reference WHERE id = ${req.params.id}`,

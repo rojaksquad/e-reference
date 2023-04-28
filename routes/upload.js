@@ -10,8 +10,69 @@ const db = mysql.createConnection({
   database: "db_reference",
 });
 
-router.get("/read", (req, res, next) => {
-      res.render("upload");
-  });
+router.get("/", (req, res, next) => {
+  res.render("upload");
+});
 
-  module.exports = router;
+router.post("/", (req, res, next) => {
+  const { judul, penulis, publisher, deskripsi, tgl} = req.body;
+
+  //check if reference is already inside the database
+  db.query(
+    "SELECT judul FROM reference WHERE judul = ?",
+    [judul],
+    async (err, results) => {
+      if (err) {
+        console.log(err);
+        res.json({
+          message: "There was an error",
+        });
+      }
+
+      if (results.length > 0) {
+        res.redirect("/upload");
+        return
+      }
+
+  // put img files into folder
+  if(req.files){
+    let imgFile = req.files.img;
+    let imgFileName = imgFile.name;
+    imgFile.mv('./uploads/img/'+ imgFileName,(err)=>{
+      if(err) throw err;
+    })
+  }    
+
+  // put pdf files into folder
+  if(req.files){
+    let pdfFile = req.files.pdf;
+    let pdfFileName = pdfFile.name;
+    pdfFile.mv('./uploads/pdf/'+pdfFileName,(err)=>{
+      if(err) throw err;
+    })
+  }
+
+  //insert the data into database
+  db.query(
+    "INSERT INTO reference SET ?",
+    { judul: judul, 
+      penulis: penulis, 
+      publisher: publisher, 
+      tgl: tgl, 
+      deskripsi: deskripsi, 
+      imgUrl: './uploads/img/'+ req.files.img.name, 
+      pdf: './uploads/pdf/'+req.files.pdf.name },
+    (err, results) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/upload");
+      }
+    }
+  );
+  
+}
+);
+});
+
+module.exports = router;

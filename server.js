@@ -4,6 +4,10 @@ const express = require("express");
 const mysql = require("mysql");
 const app = express();
 const path = require("path");
+const upload = require('express-fileupload');
+
+app.use(express.json());
+app.use(upload());
 
 // Middleware for json and urlencoded requests
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +35,7 @@ db.connect((err) => {
 // Routes middleware
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
+app.use("/upload", require("./routes/upload"));
 app.use("/category", require("./routes/category"));
 app.use("/dashboard", require("./routes/dashboard"));
 
