@@ -4,7 +4,7 @@ const express = require("express");
 const mysql = require("mysql");
 const app = express();
 const path = require("path");
-const upload = require('express-fileupload');
+const upload = require("express-fileupload");
 
 app.use(express.json());
 app.use(upload());
@@ -13,6 +13,7 @@ app.use(upload());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "uploads")));
 
 app.set("view engine", "ejs");
 
@@ -40,7 +41,6 @@ app.use("/category", require("./routes/category"));
 app.use("/dashboard", require("./routes/dashboard"));
 
 app.get("/", require("./routes/home"));
-
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

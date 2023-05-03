@@ -50,8 +50,8 @@
                                             <% break %>
                                         <% } %>
                                         <div class="col-lg-4 mt-5 text-center">
-                                            <img src="<%= data[i].imgUrl %>" width="150px" height="150px" alt="">
-                                            <a href="category/read/<%= i+1 %>"><div class="categorys btn fw-bolder mb-2"><%= data[i].judul %></div></a>
+                                            <img src="img/<%= data[i].imgUrl %>" width="150px" height="150px" alt="">
+                                            <a href="category/read/<%= data[i].id %>"><div class="categorys btn fw-bolder mb-2"><%= data[i].judul %></div></a>
                                         </div>
                                     <% } %>
                                 </div>

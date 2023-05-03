@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const { judul, penulis, publisher, deskripsi, tgl} = req.body;
+  const { judul, penulis, publisher, deskripsi, tgl } = req.body;
 
   //check if reference is already inside the database
   db.query(
@@ -31,48 +31,47 @@ router.post("/", (req, res, next) => {
 
       if (results.length > 0) {
         res.redirect("/upload");
-        return
+        return;
       }
 
-  // put img files into folder
-  if(req.files){
-    let imgFile = req.files.img;
-    let imgFileName = imgFile.name;
-    imgFile.mv('./uploads/img/'+ imgFileName,(err)=>{
-      if(err) throw err;
-    })
-  }    
+      // put img files into folder
+      if (req.files) {
+        let imgFile = req.files.img;
+        let imgFileName = imgFile.name;
+        imgFile.mv("./uploads/img/" + imgFileName, (err) => {
+          if (err) throw err;
 
-  // put pdf files into folder
-  if(req.files){
-    let pdfFile = req.files.pdf;
-    let pdfFileName = pdfFile.name;
-    pdfFile.mv('./uploads/pdf/'+pdfFileName,(err)=>{
-      if(err) throw err;
-    })
-  }
+          let pdfFile = req.files.pdf;
+          let pdfFileName = pdfFile.name;
+          pdfFile.mv("./uploads/pdf/" + pdfFileName, (err) => {
+            if (err) throw err;
 
-  //insert the data into database
-  db.query(
-    "INSERT INTO reference SET ?",
-    { judul: judul, 
-      penulis: penulis, 
-      publisher: publisher, 
-      tgl: tgl, 
-      deskripsi: deskripsi, 
-      imgUrl: './uploads/img/'+ req.files.img.name, 
-      pdf: './uploads/pdf/'+req.files.pdf.name },
-    (err, results) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.redirect("/upload");
+            //insert the data into database
+            db.query(
+              "INSERT INTO reference SET ?",
+              {
+                judul: judul,
+                penulis: penulis,
+                publisher: publisher,
+                tgl: tgl,
+                deskripsi: deskripsi,
+                imgUrl: req.files.img.name,
+                pdf: req.files.pdf.name,
+              },
+              (err, results) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  console.log("done");
+                  res.redirect("/upload");
+                }
+              }
+            );
+          });
+        });
       }
     }
   );
-  
-}
-);
 });
 
 module.exports = router;

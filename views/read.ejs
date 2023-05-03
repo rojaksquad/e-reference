@@ -42,7 +42,7 @@
       <div class="section">
         <div class="row">
           <div class="col my-3 mx-3">
-            <embed src="<%= data[0].imgUrl%>" width="500px" height="500px" />
+            <embed src="/img/<%= data[0].imgUrl%>" width="500px" height="500px" />
           </div>
           <div class="col my-3">
             <!-- table -->
@@ -85,7 +85,7 @@
                   <td>
                     <button class="btn btn-dark text-white">
                       <a
-                        href="<%= data[0].readUrl %>"
+                        href="/pdf/<%= data[0].pdf %>"
                         class="nav-link"
                       >
                         Baca</a
@@ -93,11 +93,11 @@
                     </button>
                   </td>
                   <td>
-                    <button class="btn btn-primary" <% if (data[0].downloadUrl == "") { %>
+                    <button class="btn btn-primary" <% if (data[0].pdf == "") { %>
                         hidden
                     <% } %>>
                       <a
-                        href="<%= data[0].downloadUrl %>"
+                        href="/pdf/<%= data[0].pdf %>"
                         class="nav-link text-white"
                         download
                       >
