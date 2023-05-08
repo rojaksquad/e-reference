@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
               });
             } else {
               if (result) {
-                res.redirect("/dashboard");
+                res.redirect("/upload");
               } else {
                 res.redirect("/login");
               }
