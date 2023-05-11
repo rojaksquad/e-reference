@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const { judul, penulis, publisher, deskripsi, tgl } = req.body;
+  const { judul, penulis, publisher, kategori, deskripsi, tgl } = req.body;
 
   //check if reference is already inside the database
   db.query(
@@ -31,6 +31,7 @@ router.post("/", (req, res, next) => {
 
       if (results.length > 0) {
         res.redirect("/upload");
+        console.log("Judul sudah ada!, upload dengan judul berbeda.");
         return;
       }
 
@@ -53,6 +54,7 @@ router.post("/", (req, res, next) => {
                 judul: judul,
                 penulis: penulis,
                 publisher: publisher,
+                kategori: kategori,
                 tgl: tgl,
                 deskripsi: deskripsi,
                 imgUrl: req.files.img.name,

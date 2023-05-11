@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>RojakSquad - Reference App</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/png" sizes="96x96" href="static/assets/favicon/favicon-96x96.png">
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    
+    <body class="bg-home" id="page-home" >
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3" id="homeNav">
+                <div class="container px-3 px-lg-3">
+                    <img src="/img/logo.png" width="50px" alt="">
+                    <a class="navbar-brand fw-bolder px-2" href="/" style="color: #f4623a;">Rojak Reference</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                    </div>
+                </div>
+            </nav>
+
+    </div>
+    <div id="page" style="margin-top: 8rem;">
+        <!-- Searchbar -->
+        <!-- Carrousel Buku -->
+        <div class="container">
+            <section class="page-section pt-4 px-5 bg-body">
+                <div class="container-fluid row">
+                    <h2 class="text-center"><%= category %> Category!</h2>
+                    <p class="text-center">Checkout everything there is about <%= category %>!</p>
+                    <div id="carouselExampleControls" class="carousel slide pt-5" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <% for( let i = 0; i < data.length; i++ ) { %>
+                                        <% if (i > 5) { %>
+                                            <% break %>
+                                        <% } %>
+                                        <div class="col-lg-4 mt-5 text-center">
+                                            <img src="/img/<%= data[i].imgUrl %>" width="150px" height="150px" alt="">
+                                            <a href="/category/read/<%= data[i].id %>"><div class="categorys btn fw-bolder mb-2"><%= data[i].judul %></div></a>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    <!-- End of carrousel buku -->
+        
+        
+    
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/js/scripts.js"></script>
+        <script src="/reload/reload.js"></script>
+    </body>
+</html>

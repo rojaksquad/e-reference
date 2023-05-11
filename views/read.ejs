@@ -64,6 +64,11 @@
                   <td><%= data[0].publisher%></td>
                 </tr>
                 <tr>
+                  <th scope="row">Kategori</th>
+                  <td>:</td>
+                  <td><%= data[0].kategori.toUpperCase() %></td>
+                </tr>
+                <tr>
                   <th scope="row">Tanggal Publish</th>
                   <td>:</td>
                   <td><%= data[0].tgl.toLocaleDateString('el-GR')%></td>

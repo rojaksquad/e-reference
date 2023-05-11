@@ -18,55 +18,104 @@ router.get("/read/:id", (req, res, next) => {
       res.render("read", { data: result });
     }
   );
-
 });
 
 router.get("/computer", (req, res, next) => {
-  res.json({
-    message: "Computer category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'computer'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", { data: result, category: "Computer" });
+    }
+  );
 });
 
 router.get("/data_mining", (req, res, next) => {
-  res.json({
-    message: "Data Mining category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'data_mining'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", { data: result, category: "Data Mining" });
+    }
+  );
 });
 
 router.get("/software_engineering", (req, res, next) => {
-  res.json({
-    message: "Software Engineering category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'software_engineering'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "Software Engineering",
+      });
+    }
+  );
 });
 
 router.get("/uiux", (req, res, next) => {
-  res.json({
-    message: "UIUX category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'uiux'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "UIUX",
+      });
+    }
+  );
 });
 
 router.get("/security", (req, res, next) => {
-  res.json({
-    message: "Security category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'security'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "Security",
+      });
+    }
+  );
 });
 
 router.get("/database", (req, res, next) => {
-  res.json({
-    message: "Database category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'database'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "Database",
+      });
+    }
+  );
 });
 
 router.get("/web_development", (req, res, next) => {
-  res.json({
-    message: "Web Development category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'webdev'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "Web Development",
+      });
+    }
+  );
 });
 
 router.get("/software_testing", (req, res, next) => {
-  res.json({
-    message: "Software Testing category",
-  });
+  db.query(
+    `SELECT * FROM reference WHERE kategori = 'software_testing'`,
+    function (err, result) {
+      if (err) throw err;
+      res.render("category", {
+        data: result,
+        category: "Software Testing",
+      });
+    }
+  );
 });
 
 module.exports = router;
