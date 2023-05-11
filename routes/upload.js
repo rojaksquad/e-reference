@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const flash = require('connect-flash');
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ const db = mysql.createConnection({
 });
 
 router.get("/", (req, res, next) => {
-  res.render("upload");
+  res.render('upload' , { message: "" });
 });
 
 router.post("/", (req, res, next) => {
@@ -63,7 +64,7 @@ router.post("/", (req, res, next) => {
                   console.log(err);
                 } else {
                   console.log("done");
-                  res.redirect("/upload");
+                  res.render('upload', { message: "Upload Berhasil" });
                 }
               }
             );
