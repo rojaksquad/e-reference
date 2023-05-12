@@ -13,7 +13,7 @@
       <div class="">
         <div class="container py-5">
           <div class="row gx-lg-5"></div>
-            <div class="centered">
+            <div class="centered" style="margin-top: 150px">
               <% if (message) { %>
                 <div class="alert alert-info mt-5"><%= message %></div>
             <% } %>
@@ -21,10 +21,7 @@
                 <div class="card-body shadow py-5 px-md-5">
                   <p class="text-center"></p> 
                   <div class="card-body">
-                    <!-- Navbar -->
-                <ul class="navbar-nav ms-auto mt-2 mb-0">
-                  <li class=" nav-item py-0 px-2"><a class="nav-link" href="/login" style="color: #f4623a;">Log Out</a></li>
-                </ul>
+
                 <form action="/upload" method="post" enctype="multipart/form-data">
                   <h1 class="text-center text-primary fw-bolder">Upload Your Reference !</h1>
                 <div class="mb-3">
@@ -69,6 +66,7 @@
                     <input class="form-control" type="file" name="pdf">
                   </div>
                   <button type="submit" class="btn btn-primary">Upload</button>
+                  <a class="nav-link" href="/login" style="color: #f4623a;">Log Out</a>
                 </form>
               </div>
                 </div>
