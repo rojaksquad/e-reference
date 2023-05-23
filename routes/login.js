@@ -11,8 +11,19 @@ const db = mysql.createConnection({
   database: "db_reference",
 });
 
+router.get("/:cond", (req, res, next) => {
+  const cond = req.params.cond;
+  if (cond == "true") {
+    res.render("login", { msg: "Register Success!", cond: true });
+  } else if (cond == "fail") {
+    res.render("login", { msg: "Wrong Email or Password!", cond: false });
+  } else {
+    res.redirect("/register");
+  }
+});
+
 router.get("/", (req, res, next) => {
-  res.render("login");
+  res.render("login", { msg: "", cond: false });
 });
 
 router.post("/", (req, res) => {
@@ -25,7 +36,7 @@ router.post("/", (req, res) => {
       if (!err) {
         if (docs.length > 0) {
           bcrypt.compare(password, docs[0].password, function (err, result) {
-            console.log(password, docs[0].password );
+            console.log(password, docs[0].password);
             if (err) {
               console.log(err);
               res.json({
@@ -36,12 +47,12 @@ router.post("/", (req, res) => {
                 res.redirect("/upload");
               } else {
                 console.log("password did not match", result);
-                res.redirect("/login");
+                res.redirect("/login/fail");
               }
             }
           });
         } else {
-          res.redirect("/login");
+          res.redirect("/login/fail");
         }
       } else {
         console.error(err);
