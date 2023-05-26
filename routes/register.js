@@ -31,7 +31,7 @@ router.post("/", (req, res, next) => {
 
       if (results.length > 0) {
         res.redirect("/register");
-        return
+        return;
       }
 
       let hashedPassword = await bcrypt.hash(password, 10);
@@ -43,7 +43,7 @@ router.post("/", (req, res, next) => {
           if (err) {
             console.log(err);
           } else {
-            res.redirect("/login");
+            res.redirect("/login/true");
           }
         }
       );
