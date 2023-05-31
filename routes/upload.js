@@ -1,18 +1,20 @@
+require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql");
-const flash = require('connect-flash');
+const flash = require("connect-flash");
 
 const router = express.Router();
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "db_reference",
+  host: process.env.HOST,
+  port: process.env.DB_PORT,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
 router.get("/", (req, res, next) => {
-  res.render('upload' , { message: "" });
+  res.render("upload", { message: "" });
 });
 
 router.post("/", (req, res, next) => {
@@ -66,7 +68,7 @@ router.post("/", (req, res, next) => {
                   console.log(err);
                 } else {
                   console.log("done");
-                  res.render('upload', { message: "Upload Berhasil" });
+                  res.render("upload", { message: "Upload Berhasil" });
                 }
               }
             );
