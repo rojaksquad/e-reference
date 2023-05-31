@@ -22,23 +22,23 @@
                   <p class="text-center"></p> 
                   <div class="card-body">
 
-                <form action="/upload" method="post" enctype="multipart/form-data">
+                <form action="/upload" name="form" method="post" enctype="multipart/form-data" onsubmit="onSubmit(event)">
                   <h1 class="text-center text-primary fw-bolder">Upload Your Reference !</h1>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                    <input type="text" class="form-control" name="judul">
+                    <input type="text" class="form-control" name="judul" required>
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Penulis</label>
-                    <input type="text" class="form-control" name="penulis" >
+                    <input type="text" class="form-control" name="penulis" required>
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Publisher</label>
-                    <input type="text" class="form-control" name="publisher" >
+                    <input type="text" class="form-control" name="publisher" required >
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Kategori</label>
-                    <select name="kategori" class="form-control" id="">
+                    <select name="kategori" class="form-control" id="" required >
                       <option value="computer">Computer</option>
                       <option value="data_mining">Data Mining</option>
                       <option value="software_engineering">Software Engineering</option>
@@ -51,21 +51,21 @@
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
-                    <textarea class="form-control" name="deskripsi" > </textarea>
+                    <textarea class="form-control"  name="deskripsi" required></textarea>
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Tanggal</label>
-                    <input type="date" class="form-control" name="tgl" >
+                    <input type="date"  class="form-control" name="tgl"required >
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Gambar Referensi</label>
-                    <input class="form-control" type="file" name="img">
+                    <input class="form-control" type="file" name="img"required>
                   </div>
                   <div class="mb-3">
                     <label for="formFile" class="form-label">File PDF</label>
-                    <input class="form-control" type="file" name="pdf">
+                    <input class="form-control" type="file" accept="application/pdf" name="pdf" required onchange="onChange(event)">
                   </div>
-                  <button type="submit" class="btn btn-primary">Upload</button>
+                  <button type="submit" name="upload" id="upload" class="btn btn-primary">Upload</button>
                   <a class="nav-link" href="/login" style="color: #f4623a;">Log Out</a>
                 </form>
               </div>
@@ -75,6 +75,15 @@
           </div>
         </div>
     </div>
+    <script>
+      function onChange(e){
+        let type = e.target.files[0].type;
+        if(type != "application/pdf"){
+          alert("Tidak menerima file selain PDF");
+          e.target.value = "";
+        }
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
   </html>
